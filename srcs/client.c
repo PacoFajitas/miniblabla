@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 04:31:05 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/09/15 07:12:56 by tfiguero         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:45:02 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <stdio.h>
+
+int	ft_count_chars(char *str)
+{
+	int	ret;
+	
+	ret = 0;
+	while(str[ret])
+		ret++;
+	return(ret);
+}
 
 int	ft_atoi(const char	*str)
 {
@@ -73,11 +83,14 @@ int	main(int argc, char **argv)
 {
 	int	pid;
 	int	i;
+	int chars;
 
 	i = 0;
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
+		chars = ft_count_chars(argv[2][0]);
+		ft_send(chars + '0', pid, 0);
 		while (argv[2][i] != '\0')
 		{
 			ft_send(argv[2][i], pid, 0);

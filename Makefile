@@ -10,7 +10,7 @@ CFLAGS = -Werror -Wextra -Wall #-g -fsanitize=address
 #########
 FILES_CLIENT = client
 
-FILES_SERVER = server
+FILES_SERVER = server server_aux
 
 SRC_CLIENT = $(addsuffix .c, $(FILES_CLIENT))
 
