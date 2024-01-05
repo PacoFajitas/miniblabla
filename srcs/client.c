@@ -6,24 +6,19 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 04:31:05 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/12/29 17:45:02 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/01/05 18:55:48 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <stdio.h>
+#include "../inc/minitalk.h"
 
-int	ft_count_chars(char *str)
+void	ft_count_chars(char *str)
 {
-	int	ret;
-	
-	ret = 0;
-	while(str[ret])
-		ret++;
-	return(ret);
+	int	i;
+	i = 0;
+	while (str[i])
+		i++;
+	g_chars = i;
 }
 
 int	ft_atoi(const char	*str)
@@ -83,14 +78,12 @@ int	main(int argc, char **argv)
 {
 	int	pid;
 	int	i;
-	int chars;
 
 	i = 0;
 	if (argc == 3)
 	{
+		ft_count_chars(argv[3]);
 		pid = ft_atoi(argv[1]);
-		chars = ft_count_chars(argv[2][0]);
-		ft_send(chars + '0', pid, 0);
 		while (argv[2][i] != '\0')
 		{
 			ft_send(argv[2][i], pid, 0);
